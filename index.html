@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinguaLink Translator - Colar Tradutor Sem Fio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .brand-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00ffff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #00ffff;
+        }
+
+        .brand-subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .logo-space {
+            margin-bottom: 30px;
+        }
+
+        .logo-placeholder {
+            width: 120px;
+            height: 120px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px dashed #00ffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: #00ffff;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .product-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+            align-items: center;
+        }
+
+        .product-image {
+            text-align: center;
+        }
+
+        .product-placeholder {
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px dashed #00ffff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 1rem;
+            color: #00ffff;
+            text-align: center;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 2rem;
+            color: #00ffff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .product-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            color: #ddd;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: #00ffff;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .price-section {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid #00ffff;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .price {
+            font-size: 3rem;
+            color: #00ffff;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px #00ffff;
+        }
+
+        .price-subtitle {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .buy-button {
+            background: linear-gradient(135deg, #00ffff, #9d4edd);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .buy-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+
+        .languages-supported {
+            background: rgba(157, 78, 221, 0.1);
+            border: 1px solid #9d4edd;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .languages-title {
+            font-size: 1.5rem;
+            color: #9d4edd;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            text-align: center;
+        }
+
+        .language-item {
+            background: rgba(157, 78, 221, 0.2);
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        .specs-section {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .specs-title {
+            font-size: 1.5rem;
+            color: #00ffff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .spec-label {
+            color: #ccc;
+        }
+
+        .spec-value {
+            color: #00ffff;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 255, 255, 0.2);
+            border: 1px solid #00ffff;
+            border-radius: 10px;
+            padding: 15px 20px;
+            color: #00ffff;
+            font-weight: bold;
+            z-index: 1000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .product-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .brand-title {
+                font-size: 2rem;
+            }
+            
+            .product-placeholder {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .languages-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-space">
+                <div class="logo-placeholder">
+                    <img src="ChatGPT Image 22 de set. de 2025, 16_28_57.png" alt="Logo da empresa" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+                </div>
+            </div>
+            <h1 class="brand-title">LINGUALINK TRANSLATOR</h1>
+            <p class="brand-subtitle">O Futuro da Comunicação Global</p>
+        </div>
+
+        <!-- Produto Principal -->
+        <div class="product-section">
+            <div class="product-image">
+                <div class="product-placeholder">
+                     <img src="ChatGPT Image 22 de set. de 2025, 16_53_18.png" alt="Colar Tradutor Polyglow" style="width: 300px; height: 300px; border-radius: 20px; object-fit: cover; border: 2px solid #00ffff;">
+                </div>
+            </div>
+            
+            <div class="product-info">
+                <h2 class="product-title">Colar Tradutor + Fone Sem Fio</h2>
+                <p class="product-description">
+                    Fale fluentemente no idioma selecionado! Nosso colar tradutor revolucionário 
+                    te ajuda a se comunicar perfeitamente em qualquer idioma. Vem com fone sem fio 
+                    de BRINDE que traduz tudo em tempo real. Tecnologia de ponta em um design elegante.
+                </p>
+                
+                <ul class="features-list">
+                    <li>Te ajuda a falar fluentemente no idioma escolhido</li>
+                    <li>Fone sem fio tradutor de BRINDE incluído</li>
+                    <li>Tradução bidirecional em tempo real</li>
+                    <li>Mais de 100 idiomas suportados</li>
+                    <li>Conexão Bluetooth 5.0</li>
+                    <li>Bateria de 24 horas</li>
+                    <li>Design elegante e discreto</li>
+                    <li>Resistente à água (IPX4)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Seção de Preço -->
+        <div class="price-section">
+            <div class="price">R$ 1.489,00</div>
+            <p class="price-subtitle">Parcelamento em até 12x sem juros + Fone Sem Fio de BRINDE!</p>
+            <button class="buy-button" onclick="buyProduct()">Comprar Agora</button>
+        </div>
+
+        <!-- Idiomas Suportados -->
+        <div class="languages-supported">
+            <h3 class="languages-title">Idiomas Suportados</h3>
+            <div class="languages-grid">
+                <div class="language-item">Português</div>
+                <div class="language-item">Inglês</div>
+                <div class="language-item">Espanhol</div>
+                <div class="language-item">Francês</div>
+                <div class="language-item">Alemão</div>
+                <div class="language-item">Italiano</div>
+                <div class="language-item">Japonês</div>
+                <div class="language-item">Chinês</div>
+                <div class="language-item">Coreano</div>
+                <div class="language-item">Russo</div>
+                <div class="language-item">Árabe</div>
+                <div class="language-item">Hindi</div>
+                <div class="language-item">Holandês</div>
+                <div class="language-item">Sueco</div>
+                <div class="language-item">+86 outros</div>
+            </div>
+        </div>
+
+        <!-- Especificações Técnicas -->
+        <div class="specs-section">
+            <h3 class="specs-title">Especificações Técnicas</h3>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <span class="spec-label">Conectividade:</span>
+                    <span class="spec-value">Bluetooth 5.0</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Bateria:</span>
+                    <span class="spec-value">24h contínuas</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Carregamento:</span>
+                    <span class="spec-value">USB-C rápido</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Peso:</span>
+                    <span class="spec-value">45g</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Resistência:</span>
+                    <span class="spec-value">IPX4</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Alcance:</span>
+                    <span class="spec-value">10 metros</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Processador:</span>
+                    <span class="spec-value">IA Neural</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Garantia:</span>
+                    <span class="spec-value">2 anos</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2024 Polyglow. Conectando o mundo através da tecnologia.</p>
+        </div>
+    </div>
+
+    <!-- Notificação -->
+    <div id="notification" class="notification">
+        Produto adicionado ao carrinho! 🛒
+    </div>
+
+    <script>
+        function buyProduct() {
+            const notification = document.getElementById('notification');
+            
+            // Mostra a notificação
+            notification.classList.add('show');
+            
+            // Esconde após 3 segundos
+            setTimeout(function() {
+                notification.classList.remove('show');
+            }, 3000);
+            
+            // Aqui você pode adicionar a lógica real de compra
+            console.log('Produto adicionado ao carrinho!');
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98345369d4da6220',t:'MTc1ODU3MDU2OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
